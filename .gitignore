@@ -1,0 +1,8 @@
+.DS_Store
+node_modules/
+npm-debug.log
+.editorconfig
+dist/
+performance-chart-h5.html
+.scannerwork/report-task.txt
+.scannerwork/.sonar_lock

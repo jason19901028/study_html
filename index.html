@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.8.2/skins/default/aliplayer-min.css" />
+  <script type="text/javascript" charset="utf-8"
+    src="https://g.alicdn.com/de/prismplayer/2.8.2/aliplayer-min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <!-- <div id="player-con"></div> -->
+  <!-- <script>
+    var player = new Aliplayer({
+      id: "player-con",
+      source: "//player.alicdn.com/video/editor.mp4",
+      width: "100%",
+      height: "500px",
+      cover: 'https://img.alicdn.com/tps/TB1EXIhOFXXXXcIaXXXXXXXXXXX-760-340.jpg',
+      /* To set an album art, you must set 'autoplay' and 'preload' to 'false' */
+      autoplay: false,
+      preload: false,
+      isLive: false,
+      language: "en-us"
+    }, function (player) {
+      console.log("The player is created");
+    });
+  </script> -->
+  <script>
+    var appid = "wxb7d09a052984168c";
+    var GWC = {
+      version: '1.1.1',
+      urlParams: {},
+      appendParams: function (url, params) {
+        if (params) {
+          debugger
+          var baseWithSearch = url.split('#')[0];
+          var hash = url.split('#')[1];
+          for (var key in params) {
+            var attrValue = params[key];
+            if (attrValue !== undefined) {
+              var newParam = key + "=" + attrValue;
+              if (baseWithSearch.indexOf('?') > 0) {
+                var oldParamReg = new RegExp('^' + key + '=[-%.!~*\'\(\)\\w]*', 'g');
+                if (oldParamReg.test(baseWithSearch)) {
+                  baseWithSearch = baseWithSearch.replace(oldParamReg, newParam);
+                } else {
+                  baseWithSearch += "&" + newParam;
+                }
+              } else {
+                baseWithSearch += "?" + newParam;
+              }
+            }
+          }
+          if (hash) {
+            url = baseWithSearch + '#' + hash;
+          } else {
+            url = baseWithSearch;
+          }
+        }
+        return url;
+      },
+      getUrlParams: function () {
+        var pairs = location.search.substring(1).split('&');
+        for (var i = 0; i < pairs.length; i++) {
+          var pos = pairs[i].indexOf('=');
+          if (pos === -1) {
+            continue;
+          }
+          GWC.urlParams[pairs[i].substring(0, pos)] = decodeURIComponent(pairs[i].substring(pos + 1));
+        }
+      },
+      doRedirect: function () {
+        var code = GWC.urlParams['index'];
+        var appId = GWC.urlParams['appid'];
+        var scope = GWC.urlParams['scope'] || 'snsapi_base';
+        var state = GWC.urlParams['state'];
+        var redirectUri;
+        if (!code) {
+          // https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx520c15f417810387&redirect_uri=https%3A%2F%2Fchong.qq.com%2Fphp%2Findex.php%3Fd%3D%26c%3DwxAdapter%26m%3DmobileDeal%26showwxpaytitle%3D1%26vb2ctag%3D4_2030_5_1194_60&response_type=code&scope=snsapi_base&state=123#wechat_redirect
+          //第一步，没有拿到code，跳转至微信授权页面获取code
+          redirectUri = GWC.appendParams('https://open.weixin.qq.com/connect/oauth2/authorize#wechat_redirect', {
+            'appid': appid,
+            'redirect_uri': encodeURIComponent("http://admin.craou.cn"),
+            'response_type': 'code',
+            'scope': 'snsapi_userinfo',
+            'state': 'STATE',
+          });
+        } else {
+          //第二步，从微信授权页面跳转回来，已经获取到了code，再次跳转到实际所需页面
+          redirectUri = GWC.appendParams(GWC.urlParams['redirect_uri'], {
+            'code': code,
+            'state': state
+          });
+        }
+        location.href = redirectUri;
+      }
+    };
+    // GWC.getUrlParams();
+    // GWC.doRedirect();
+  </script>
+</body>
+
+</html>
