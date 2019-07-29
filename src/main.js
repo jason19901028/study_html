@@ -14,44 +14,6 @@ import iView from 'iview';
 import 'iview/dist/styles/iview.css'
 // import 'element-ui/lib/theme-chalk/index.css'
 import 'swiper/dist/css/swiper.css'
-// import {
-//   /* eslint-disable no-unused-vars */
-//   Style,
-//   // basic
-//   Button,
-//   Loading,
-//   Tip,
-//   Toolbar,
-//   // form
-//   Checkbox,
-//   CheckboxGroup,
-//   Radio,
-//   Checker,
-//   Input,
-//   Textarea,
-//   Select,
-//   Switch,
-//   Rate,
-//   Validator,
-//   Upload,
-//   Form,
-//   // popup
-//   Popup,
-//   Toast,
-//   Picker,
-//   CascadePicker,
-//   DatePicker,
-//   TimePicker,
-//   SegmentPicker,
-//   Dialog,
-//   ActionSheet,
-//   Drawer,
-//   // scroll
-//   Scroll,
-//   Slide,
-//   IndexList,
-//   Swipe
-// } from 'cube-ui'
 
 
 
@@ -61,54 +23,6 @@ import '@/assets/iconfont/iconfont.css'
 import './utils/remote-script'
 import { getToken, setToken } from '@/utils/auth'
 
-// import { getSessionStorage, setSessionStorage } from 'utils/store'
-// import { getSessionStorage } from 'utils/store'
-// import axios from 'axios'
-// let request = axios.create({
-//   headers: {
-//     'Content-Type': 'application/json'
-//   }
-// })
-
-// request.get(`https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx11f2de2564988f9c&redirect_uri=http://craou.cn&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`).then((res) => {
-//   console.log('request===', res)
-// })
-
-
-
-// let local = window.location.href
-// let codes = null
-// // console.log('code=', codes)
-// // console.log('local=', local)
-// if (codes === null || codes === '') {
-//   window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb7d09a052984168c&redirect_uri=${encodeURIComponent('http://admin.craou.cn')}&response_type=code&scope=snsapi_base&state=1#wechat_redirect`
-//   let getUrlParam = (name) => {
-//     let reg = new RegExp('(^|&)' + name + '=([^&*])(&|$)')
-//     let r = window.location.search.substr(1).match(reg)
-//     if (r !== null) {
-//       return unescape(r[2])
-//     }
-//     return null
-//   }
-//   let code = getUrlParam('code')
-//   let search = window.location.search
-//   // console.log(searwindow.location)
-//   console.log('window.location=', window.location)
-//   console.log('code=======', code);
-//   // alert('window.location.href===', window)
-//   if (code) {
-//     setToken(code)
-//   }
-// } else {
-//   setToken('')
-// }
-// import { getCookie, setCookie } from './utils/store'
-// import { Table, TableColumn, Slider, Input } from 'element-ui'
-
-// Vue.component(Table.name, Table)
-// Vue.component(TableColumn.name, TableColumn)
-// Vue.component(Slider.name, Slider)
-// Vue.use(Input)
 
 Vue.prototype.$echarts = echarts
 Vue.prototype.$eventBus = new Vue()
@@ -158,31 +72,6 @@ router.beforeEach((to, from, next) => {
   } else {
     next() // 确保一定要调用 next()
   }
-  // document.title = to.meta.title || to.name
-  // if (from.path !== '/dc/home' && to.path === '/dc/download') {
-  //   next()
-  // } else if (!to.meta.skipAuth) {
-  //   let token = getSessionStorage('token')
-  //   if (!token) {
-  // token = from.query.token
-  // setSessionStorage('token', token)
-  //   }
-  //   if (!token) {
-  //     token = getCookie('token')
-  //     setSessionStorage('token', token)
-  //   } else {
-  //     setCookie('token', token, 1)
-  //   }
-  //   if (!token) {
-  //     next({
-  //       path: '/404'
-  //     })
-  //   } else {
-  //     next()
-  //   }
-  // } else {
-  //   next()
-  // }
 })
 
 router.afterEach((to) => {
